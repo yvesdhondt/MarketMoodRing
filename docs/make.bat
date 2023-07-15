@@ -1,3 +1,7 @@
+REM Copyright (C) PROWLER.io 2020 - All Rights Reserved
+REM Unauthorised copying of this file, via any medium is strictly prohibited
+REM Proprietary and confidential
+
 @ECHO OFF
 
 pushd %~dp0
