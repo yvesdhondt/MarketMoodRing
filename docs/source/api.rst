@@ -1,6 +1,9 @@
 API
 ===
 
-.. module:: marketmoodring
+.. autosummary::
+   :toctree: _autosummary
+   :template: custom-module-template.rst
+   :recursive:
 
-.. autofunction:: add
+   marketmoodring
