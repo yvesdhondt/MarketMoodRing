@@ -2,6 +2,10 @@
 
 # -- Project information
 
+import os
+import sys
+sys.path.insert(0, os.path.abspath('../..'))
+
 project = 'MarketMoodRing'
 copyright = '2023, Yves Dhondt, Matteo Di Venti, Rohan Rishi, Jackson Walker'
 author = 'Yves Dhondt, Matteo Di Venti, Rohan Rishi, Jackson Walker'
@@ -18,8 +22,9 @@ extensions = [
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
     'sphinx.ext.napoleon',
-    'autoapi.extension'
 ]
+
+autosummary_generate = True
 
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),
