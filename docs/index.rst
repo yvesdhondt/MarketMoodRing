@@ -6,7 +6,7 @@
 
    Home page <self>
    Jupyter tutorials <tutorials>
-   API reference <api>
+   API reference <_autosummary/marketmoodring>
 
 Welcome to Sphinx-Autosummary-Recursion documentation
 =====================================================
