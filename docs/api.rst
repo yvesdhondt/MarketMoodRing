@@ -9,4 +9,6 @@
    :template: custom-module-template.rst
    :recursive:
 
-   marketmoodring
+   marketmoodring/portfolio_optimization
+   marketmoodring/regime_detection
+   marketmoodring/tools
