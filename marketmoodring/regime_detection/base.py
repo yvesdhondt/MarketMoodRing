@@ -1,3 +1,7 @@
+"""
+API reference documentation for the base regime detection class
+"""
+
 from abc import ABC, abstractmethod
 
 import numpy as np
