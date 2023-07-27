@@ -1,4 +1,4 @@
-# MarketMoodRing
+# MarketMoodRing🎭
 
 ## Description
 
