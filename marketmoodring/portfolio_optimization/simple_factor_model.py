@@ -16,14 +16,18 @@ class SimpleFactorPortfolioOptimization(FactorPortfolioOptimization):
 
         Parameters
         ----------
-        index_data : A data frame with the time series asset returns
-        factor_data : A data frame with the time series factor returns
-        trans_mat :  The transition probability matrix of the regime switching model.
-        fitted_states : The fitted states of the regime switching model.
+        index_data : pandas.DataFrame
+            A DataFrame with the time series asset returns.
+        factor_data : pandas.DataFrame
+            A DataFrame with the time series factor returns.
+        trans_mat : Union[numpy.ndarray, pandas.DataFrame]
+            The transition probability matrix of the regime switching model.
+        fitted_states : numpy.ndarray[numpy.int64]
+            The fitted states of the regime switching model.
 
         Returns
         -------
-        (np.ndarray, np.ndarray)
+        Tuple[numpy.ndarray[numpy.float64], numpy.ndarray[numpy.float64]]
             A tuple (mu, sigma) containing the expected return vector and covariance matrix of the assets.
         """
         factor_names = factor_data.columns

@@ -96,18 +96,23 @@ def _calc_sequence(start_state, trans_mat, states, seq_length):
 
     Parameters
     ----------
-    start_state : int64
-        The initial state.
-    trans_mat : float64[:,:]
-        The transition matrix.
-    states : int64[:]
-        The possible states.
-    seq_length : int64
-        The sequence length.
+    start_state : numpy.int64
+        The initial state of each sequence.
+    trans_mat : numpy.ndarray[numpy.float64]
+        The transition matrix that defines the probabilities of transitioning from one state to another.
+    states : numpy.ndarray[numpy.int64]
+        An array of possible states.
+    seq_length : numpy.int64
+        The length of each sequence to generate.
 
     Returns
     -------
-    sequence : int64[:]
+    sequence : numpy.ndarray[numpy.int64]
+        An array of random sequence of states.
+
+    Notes
+    -----
+    This function uses Numba to speed up the calculation.
     """
     sequence = np.empty(seq_length, dtype=np.int64)
     sequence[0] = start_state
@@ -118,24 +123,25 @@ def _calc_sequence(start_state, trans_mat, states, seq_length):
 
 def _calc_n_sequences(n_sequences, start_state, trans_mat, states, seq_length):
     """
-    Calculate a random sequence of states.
+    Calculate multiple random sequences of states.
 
     Parameters
     ----------
-    n_sequences : int64
-        The number of sequences.
-    start_state : int64
-        The initial state.
-    trans_mat : float64[:,:]
-        The transition matrix.
-    states : int64[:]
-        The possible states.
-    seq_length : int64
-        The sequence length.
+    n_sequences : numpy.int64
+        The number of sequences to generate.
+    start_state : numpy.int64
+        The initial state of each sequence.
+    trans_mat : numpy.ndarray[numpy.float64]
+        The transition matrix that defines the probabilities of transitioning from one state to another.
+    states : numpy.ndarray[numpy.int64]
+        An array of possible states.
+    seq_length : numpy.int64
+        The length of each sequence to generate.
 
     Returns
     -------
-    sequences : int64[:,:]
+    sequences : numpy.ndarray[numpy.int64]
+        An array of random sequences of states.
     """
     sequences = np.empty((n_sequences, seq_length))
     return np.apply_along_axis(
@@ -149,22 +155,22 @@ def _calc_sharpes(weights, mu, sigma, state_counts, seq_length, rf=0):
 
     Parameters
     ----------
-    weights : float64[:]
+    weights : numpy.ndarray[numpy.float64]
         The weights.
-    mu : float64[:,:]
+    mu : numpy.ndarray[numpy.float64]
         The expected returns.
-    sigma : float64[:,:,:]
+    sigma : numpy.ndarray[numpy.float64]
         The covariance matrix.
-    state_counts : int64[:,:]
+    state_counts : numpy.ndarray[numpy.int64]
         The state counts for each sequence.
-    seq_length : int64
+    seq_length : numpy.int64
         The sequence length.
-    rf : float64
-        The risk free rate.
+    rf : numpy.float64, optional
+        The risk free rate. Default is 0.
 
     Returns
     -------
-    srs : float64[:,:]
+    srs : numpy.ndarray[numpy.float64]
         Sharpe ratios.
     """
     w = weights.reshape(-1, 1)
@@ -184,23 +190,23 @@ def _max_avg_sharpe(weights, mu, sigma, state_counts, seq_length):
 
 def _calc_value_at_risk(weights, mu, sigma, state_counts):
     """
-    Calculate the value at risk.
+    Calculate the Value at Risk (VaR) for each state sequence.
 
     Parameters
     ----------
-    weights : float64[:]
+    weights : numpy.ndarray[numpy.float64]
         The weights.
-    mu : float64[:,:]
+    mu : numpy.ndarray[numpy.float64]
         The expected returns.
-    sigma : float64[:,:,:]
+    sigma : numpy.ndarray[numpy.float64]
         The covariance matrix.
-    state_counts : int64[:,:]
+    state_counts : numpy.ndarray[numpy.int64]
         The state counts for each sequence.
 
     Returns
     -------
-    vars : float64[:,:]
-        5% Value at Risk for each state sequence
+    vars : numpy.ndarray[numpy.float64]
+        The 5% Value at Risk for each state sequence.
     """
     w = weights.reshape(-1, 1)
 
@@ -224,14 +230,19 @@ def _count_states(sequences, n_states):
 
     Parameters
     ----------
-    sequences : int64[:,:]
-        The sequences.
-    n_states : int64
-        The number of states.
+    sequences : numpy.ndarray[numpy.int64]
+        An array of sequences.
+    n_states : numpy.int64
+        The number of possible states.
 
     Returns
     -------
-    state_counts : int64[:,:]
+    state_counts : numpy.ndarray[numpy.int64]
+        An array of state counts for each sequence.
+
+    Notes
+    -----
+    This function uses Numba to speed up the calculation.
     """
     result = np.empty((len(sequences), n_states), dtype=np.int64)
 
