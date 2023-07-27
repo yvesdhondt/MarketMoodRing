@@ -1,0 +1,6 @@
+numpy
+hmmlearn==0.3.*
+pandas
+pot==0.9.*
+pyportfolioopt
+statsmodels

@@ -39,7 +39,7 @@ cd MarketMoodRing
 import sys
 sys.path.insert(0, '/path/to/MarketMoodRing')
 
-from marketmoodring import regime_detection, portfolio_optimization
+from marketmoodring.regime_detection import HiddenMarkovRegimeDetection
 ```
 
 Please replace `/path/to/MarketMoodRing` with the actual path to the cloned repository on your system.
@@ -49,6 +49,34 @@ Remember to keep the repository updated with:
 ```bash
 git pull origin main
 ```
+
+## Dependencies
+
+The MarketMoodRing package requires several dependencies to function properly. These dependencies can be installed using either conda (recommended) or pip.
+
+### Using Conda
+
+If you're using Conda, you can create a new environment and install all dependencies using the `environment.yml` file located in the root directory. Run the following command in your terminal / Anaconda Prompt once you've navigated to the cloned repository:
+
+```bash
+conda env create -f environment.yml
+```
+
+This will create a new Conda environment called `marketmoodring-env` and install all necessary packages. To activate the environment, use:
+
+```bash
+conda activate marketmoodring-env
+```
+
+### Using pip
+
+If you prefer using pip, you can install all dependencies using the `requirements.txt` file also located in the root directory. Run the following command in your terminal:
+
+```bash
+pip install -r requirements.txt
+```
+
+This will install all the necessary packages listed in the `requirements.txt` file. Please note that this will install the packages globally on your system, which can result in unexpected behavior. If you want to install the packages in a virtual environment, please refer to the [Python documentation](https://docs.python.org/3/tutorial/venv.html), or use the Conda environment as described above.
 
 ## Usage
 
