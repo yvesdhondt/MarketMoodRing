@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "D'hondt"
+  given-names: "Yves Alexander"
+- family-names: "Di Venti"
+  given-names: "Matteo Mario"
+- family-names: "Rishi"
+  given-names: "Rohan"
+- family-names: "Walker"
+  given-names: "Jackson"
+title: "MarketMoodRing"
+version: 1.0.0
+date-released: 2023-07-27
+url: "https://github.com/yvesdhondt/MarketMoodRing"
