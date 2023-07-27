@@ -17,16 +17,25 @@ class IdiosyncraticFactorPortfolioOptimization(FactorPortfolioOptimization):
 
         Parameters
         ----------
-        index_data : A data frame with the time series asset returns
-        factor_data : A data frame with the time series factor returns
-        trans_mat :  The transition probability matrix of the regime switching model.
-        fitted_states : The fitted states of the regime switching model.
+        index_data : pandas.DataFrame
+            A data frame with the time series asset returns.
+        factor_data : pandas.DataFrame
+            A data frame with the time series factor returns.
+        trans_mat : numpy.ndarray or pandas.DataFrame
+            The transition probability matrix of the regime switching model.
+        fitted_states : numpy.ndarray
+            The fitted states of the regime switching model.
 
         Returns
         -------
-        (np.ndarray, np.ndarray)
+        tuple
             A tuple (mu, sigma) containing the expected return vector and covariance matrix of the assets.
-        """
+
+            mu : numpy.ndarray
+                The regime-dependent expected return vector of the assets.
+            sigma : numpy.ndarray
+                The regime-dependent covariance matrix of the assets.
+            """
         factor_names = factor_data.columns
         n_factors = len(factor_names)
         current_state = int(fitted_states[-1])
@@ -74,19 +83,27 @@ class IdiosyncraticFactorPortfolioOptimization(FactorPortfolioOptimization):
 
         Parameters
         ----------
-        X : np.ndarray
-            matrix of factor returns
-        Y : np.ndarray
-            matrix of target asset returns
-        factor_names : [string]
-            names of the factors in the factor model
-        fitted_states : np.ndarray
-            array of regime labels
+        X : numpy.ndarray
+            A matrix of factor returns.
+        Y : numpy.ndarray
+            A matrix of target asset returns.
+        factor_names : list of str
+            A list of names of the factors in the factor model.
+        fitted_states : numpy.ndarray
+            An array of regime labels.
 
         Returns
         -------
-        (ols, state_factors)
-            A tuple consisting of an OLS model and a dictionary of state-factor information
+        tuple
+            A tuple consisting of an OLS model and a dictionary of state-factor information.
+
+            ols : statsmodels.regression.linear_model.RegressionResultsWrapper
+                The OLS model.
+            state_factors : dict
+                A dictionary of state-factor information.
+
+                names : list of str
+                    A list of names of the state factors.
         """
         # Transform factors by indicator function to allow for OLS estimation of regime-dependent FF3 model
         X["state"] = fitted_states

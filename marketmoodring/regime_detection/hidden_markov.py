@@ -44,20 +44,32 @@ class HiddenMarkovRegimeDetection(RegimeDetectionBase):
 
     def _fit(self, data: np.ndarray, index: np.ndarray = None, *args, **kwargs):
         """
-        Fit a Gaussian HMM on the given data
-        
+        Fit a Gaussian HMM or GMM HMM on the given data.
+
         Parameters
         ----------
-        data: np.ndarray
-            the time series data to fit the HMM on
-        index: np.ndarray
-            the time index of the time series data
-        :random_state: None or int
-            a random state applied to the HMM
-        :args: 
-            any args from the superclass, if any
-        :kwargs:
-            any kwargs from the superclass, if any
+        data : numpy.ndarray
+            A matrix of time series data to fit the HMM on.
+        index : numpy.ndarray, optional
+            The time index of the time series data.
+        *args : tuple
+            Any additional positional arguments from the superclass, if any.
+        **kwargs : dict
+            Any additional keyword arguments from the superclass, if any.
+
+        Returns
+        -------
+        None
+            This method does not return anything, but it sets the following instance variables:
+
+            _model : hmmlearn.hmm.GaussianHMM or hmmlearn.hmm.GMMHMM
+                The fitted HMM model.
+            _fitted_states : numpy.ndarray
+                The fitted states of the HMM model.
+            _fitted_states_proba : numpy.ndarray
+                The fitted state probabilities of the HMM model.
+            _trans_mat : numpy.ndarray
+                The transition probability matrix of the HMM model.
         """
         # Create HMM Model
         if self._type == "GaussianHMM":
