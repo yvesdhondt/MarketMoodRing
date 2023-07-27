@@ -2,7 +2,7 @@
 
 ## Description
 
-MarketMoodRing is a Python package designed for testing different regime detection models and portfolio optimizers. This tool is a product of research conducted by the UC Berkeley, Haas School of Business, Master of Financial Engineering, 2023. It aims to provide a framework for financial market regime analysis and portfolio management testing.
+MarketMoodRing🎭 is a Python package designed for testing different regime detection models and portfolio optimizers. This tool is a product of research conducted by the UC Berkeley, Haas School of Business, Master of Financial Engineering, 2023. It aims to provide a framework for financial market regime analysis and portfolio management testing.
 
 ## Collaborators
 - [Yves D'hondt](https://github.com/yvesdhondt)
@@ -13,7 +13,7 @@ MarketMoodRing is a Python package designed for testing different regime detecti
 
 ## Features
 
-- **Regime Detection Models**: Includes various models such as Hidden Markov Models (HMM), Wasserstein K-Means, and others.
+- **Regime Detection Models**: Currently includes Hidden Markov Models (HMM) and Wasserstein K-Means clustering (WKM).
 - **Portfolio Optimizers**: Implements different portfolio optimization strategies, including stochastic programming and factor-based optimization.
 
 
