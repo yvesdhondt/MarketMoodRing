@@ -104,6 +104,10 @@ weights = opt_model.calculate_weights(
                 )
 ```
 
+## Reference
+
+The `\reference` folder contains the [project paper](reference/project_paper.pdf) from where this library originated.
+
 ## License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for more details.
