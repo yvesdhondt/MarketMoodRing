@@ -10,6 +10,9 @@ MarketMoodRing🎭 is a Python package designed for testing different regime det
 - [Rohan Rishi](https://github.com/RohanRishi)
 - [Jackson Walker](https://github.com/jacksonrgwalker/])
 
+## Reference
+
+The `\reference` folder contains the [project paper](reference/project_paper.pdf) from where this library originated.
 
 ## Features
 
@@ -103,10 +106,6 @@ weights = opt_model.calculate_weights(
                     index_data = index_data,
                 )
 ```
-
-## Reference
-
-The `\reference` folder contains the [project paper](reference/project_paper.pdf) from where this library originated.
 
 ## License
 
